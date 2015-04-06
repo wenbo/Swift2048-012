@@ -36,7 +36,7 @@ class GameModel
     
     func isSuccess() -> Bool
     {
-        for i in 0..(dimension*dimension)
+        for i in 0..<(dimension*dimension)
         {
             if(tiles[i] >= maxnumber)
             {
@@ -73,15 +73,15 @@ class GameModel
         return true
     }
     
-    func emptyPositions()-> Int[]
+    func emptyPositions()-> [Int]
     {
         var emptytiles = Array<Int>()
         //var index:Int
-        for i in 0..(dimension*dimension)
+        for i in 0..<(dimension*dimension)
         {
             if(tiles[i] == 0)
             {
-                emptytiles += i
+                emptytiles += [i]
             }
         }
         return emptytiles
@@ -98,7 +98,7 @@ class GameModel
     
     func copyToMtiles()
     {
-        for i in 0..self.dimension * self.dimension
+        for i in 0..<self.dimension * self.dimension
         {
             mtiles[i] = tiles[i]
         }
@@ -106,7 +106,7 @@ class GameModel
     
     func copyFromMtiles()
     {
-        for i in 0..self.dimension * self.dimension
+        for i in 0..<self.dimension * self.dimension
         {
             tiles[i] = mtiles[i]
         }
@@ -118,7 +118,7 @@ class GameModel
         var index:Int
         for var i=dimension-1; i>0; i--
         {
-            for j in 0..dimension
+            for j in 0..<dimension
             {
                 index = self.dimension * i+j
                 if(mtiles[index-self.dimension] == 0
@@ -147,8 +147,8 @@ class GameModel
     {
         copyToMtiles()
         var index:Int
-        for i in 0..dimension-1 {
-            for j in 0..dimension {
+        for i in 0..<dimension-1 {
+            for j in 0..<dimension {
                 index = self.dimension * i + j
                 if (mtiles[index+self.dimension] == 0)
                     && (mtiles[index] > 0)
@@ -177,7 +177,7 @@ class GameModel
     {
         copyToMtiles()
         var index:Int
-        for i in 0..dimension {
+        for i in 0..<dimension {
             for var j=dimension-1; j>0; j-- {
                 index = self.dimension * i + j
                 if (mtiles[index-1] == 0)
@@ -208,8 +208,8 @@ class GameModel
     {
         copyToMtiles()
         var index:Int
-        for i in 0..dimension {
-            for j in 0..dimension-1 {
+        for i in 0..<dimension {
+            for j in 0..<dimension-1 {
                 index = self.dimension * i + j
                 if (mtiles[index+1] == 0)
                     && (mtiles[index] > 0)
@@ -251,7 +251,7 @@ class GameModel
         var index:Int
         for var i=dimension-1; i>0; i--
         {
-            for j in 0..dimension
+            for j in 0..<dimension
             {
                 index = self.dimension * i + j
                 if((mtiles[index] > 0) && (mtiles[index-self.dimension] == mtiles[index]))
@@ -269,8 +269,8 @@ class GameModel
     {
         copyToMtiles()
         var index:Int
-        for i in 0..dimension-1 {
-            for j in 0..dimension {
+        for i in 0..<dimension-1 {
+            for j in 0..<dimension {
                 index = self.dimension * i + j
                 if (mtiles[index] > 0 && mtiles[index+self.dimension] == mtiles[index])
                 {
@@ -287,7 +287,7 @@ class GameModel
     {
         copyToMtiles()
         var index:Int
-        for i in 0..dimension {
+        for i in 0..<dimension {
             for var j=dimension-1; j>0; j-- {
                 index = self.dimension * i + j
                 if (mtiles[index] > 0 && mtiles[index-1] == mtiles[index])
@@ -305,8 +305,8 @@ class GameModel
     {
         copyToMtiles()
         var index:Int
-        for i in 0..dimension {
-            for j in 0..dimension-1 {
+        for i in 0..<dimension {
+            for j in 0..<dimension-1 {
                 index = self.dimension * i + j
                 if (mtiles[index] > 0 && mtiles[index+1] == mtiles[index])
                 {

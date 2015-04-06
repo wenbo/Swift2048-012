@@ -10,7 +10,7 @@ import UIKit
 
 class MainTabViewController:UITabBarController
 {
-    init()
+    override init()
     {
         super.init(nibName:nil, bundle:nil)
         
@@ -31,5 +31,9 @@ class MainTabViewController:UITabBarController
         ]
         
         self.selectedIndex = 0
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

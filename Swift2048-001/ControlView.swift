@@ -19,8 +19,8 @@ class ControlView
         
         button.backgroundColor = UIColor.orangeColor()
         button.setTitle(title, forState:.Normal)
-        button.titleLabel.textColor = UIColor.whiteColor()
-        button.titleLabel.font = UIFont.systemFontOfSize(14)
+        button.titleLabel?.textColor = UIColor.whiteColor()
+        button.titleLabel?.font = UIFont.systemFontOfSize(14)
         
         button.addTarget(sender, action:action, forControlEvents:UIControlEvents.TouchUpInside)
         
@@ -42,11 +42,11 @@ class ControlView
         return textField
     }
     
-    func createSegment(items: String[], action:Selector, sender:UIViewController) ->UISegmentedControl
+    func createSegment(items: [String], action:Selector, sender:UIViewController) ->UISegmentedControl
     {
         var segment = UISegmentedControl(items:items)
         segment.frame = defaultFrame
-        segment.segmentedControlStyle = UISegmentedControlStyle.Bordered
+        // segment.segmentedControlStyle = UISegmentedControl.
         segment.momentary = false
         segment.addTarget(sender, action:action, forControlEvents:UIControlEvents.ValueChanged)
         

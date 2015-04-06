@@ -51,7 +51,7 @@ class MainViewController:UIViewController
     
     var bestscore:BestScoreView!
     
-    init()
+    override init()
     {
         self.backgrounds = Array<UIView>()
         
@@ -62,6 +62,10 @@ class MainViewController:UIViewController
         
        
         super.init(nibName:nil, bundle:nil)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad()
@@ -74,7 +78,7 @@ class MainViewController:UIViewController
         self.gmodel = GameModel(dimension: self.dimension,
             maxnumber:maxnumber, score:score, bestscore:bestscore)
         
-        for i in 0..2
+        for i in 0..<2
         {
             genNumber()
         }
@@ -118,17 +122,17 @@ class MainViewController:UIViewController
         var x:CGFloat = 30
         var y:CGFloat = 150
         
-        for i in 0..dimension
+        for i in 0..<dimension
         {
             println(i)
             y = 150
-            for j in 0..dimension
+            for j in 0..<dimension
             {
                 var background = UIView(frame:CGRectMake(x, y, width, width))
                 background.backgroundColor = UIColor.darkGrayColor()
                 
                 self.view.addSubview(background)
-                backgrounds += background
+                backgrounds += [background]
                 y += padding + width
             }
             x += padding+width
@@ -288,7 +292,7 @@ class MainViewController:UIViewController
         println("reset")
         resetUI()
         gmodel.initTiles()
-        for i in 0..2
+        for i in 0..<2
         {
             genNumber()
         }
@@ -302,9 +306,9 @@ class MainViewController:UIViewController
         var tileVal:Int
     
         
-        for i in 0..dimension
+        for i in 0..<dimension
         {
-            for j in 0..dimension
+            for j in 0..<dimension
             {
                 index = i*self.dimension + j
                 key = NSIndexPath(forRow:i, inSection:j)
